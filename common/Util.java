@@ -1,4 +1,4 @@
-package search.common;
+package common;
 import java.util.Scanner;
 
 public final class Util {

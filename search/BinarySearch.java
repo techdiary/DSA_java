@@ -1,6 +1,6 @@
-package search.search;
+package search;
 
-import search.common.Util;
+import common.Util;
 
 public class BinarySearch {
 

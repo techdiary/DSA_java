@@ -1,7 +1,7 @@
-package search.search;
+package search;
 
 import java.util.Scanner;
-import search.common.Util;
+import common.Util;
 
 public class LinearSearch {
   
