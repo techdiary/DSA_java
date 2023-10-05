@@ -7,11 +7,11 @@ import java.util.List;
 public class MissingNumber {
 //https://leetcode.com/problems/missing-number/
     public static void main(String[] args) {
-        int[] arr = {4,3,2,7,8,2,3,1};
+        int[] arr = {1,2,2,4};
         int missNum = missingNumber(arr);
         ArrayList<Integer> missingNums = missingNumbers(arr);
         System.out.println(missingNums);
-        // System.out.println(missNum);
+        System.out.println(missNum);
     }
 
 
