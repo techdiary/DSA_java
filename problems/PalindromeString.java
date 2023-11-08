@@ -9,6 +9,7 @@ public class PalindromeString {
         String pal1 = "abccba";
         isPalindrome(pal);
         isPalindrome(pal1);
+        fibo(1);
     }
 
     private static void isPalindrome(String str) {
@@ -24,5 +25,14 @@ public class PalindromeString {
                 return;
             }
         }
+    }
+
+    static void fibo(int n) {
+        if (n > 120) {
+            return;
+        }
+        System.out.println("No: "+n);
+        n = n+n;
+        fibo(n);
     }
 }
