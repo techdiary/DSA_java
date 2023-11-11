@@ -6,12 +6,13 @@ public class LinearSearch {
 
     public static void main(String[] args) {
         int[] arr = {2,3,1,4,4,5};
-        System.out.println(find(arr, 4, 0));
-        System.out.println(findIndex(arr, 4, 0));
-        System.out.println(findIndexFromLast(arr, 4, arr.length-1));
-        findAllIndex(arr, 4, 0);
-        System.out.println(list);
-        System.out.println(findAllIndexWithArray(arr, 4, 0, list2));
+//        System.out.println(find(arr, 4, 0));
+//        System.out.println(findIndex(arr, 4, 0));
+//        System.out.println(findIndexFromLast(arr, 4, arr.length-1));
+//        findAllIndex(arr, 4, 0);
+//        System.out.println(list);
+//        System.out.println(findAllIndexWithArray(arr, 4, 0, list2));
+        System.out.println(findAllIndexWithArray2(arr, 4, 0));
     }
     private static boolean find(int[] arr, int n, int i) {
 
@@ -63,5 +64,24 @@ public class LinearSearch {
             list.add(index);
         }
         return findAllIndexWithArray(arr, n, index + 1, list);
+    }
+
+    static ArrayList<Integer> findAllIndexWithArray2(int[] arr, int n, int index) {
+
+        ArrayList<Integer> list2 = new ArrayList<>();
+
+        if(index == arr.length) {
+            return list2;
+        }
+
+        if(arr[index] == n) {
+            list2.add(index);
+        }
+
+        ArrayList<Integer> ansFromCallbacks = findAllIndexWithArray2(arr, n, index +1);
+
+        list2.addAll(ansFromCallbacks);
+
+        return list2;
     }
 }
