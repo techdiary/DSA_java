@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.List;
+
 public class MergeSort {
 
     public ListNode sortList(ListNode head) {
@@ -62,6 +64,26 @@ public class MergeSort {
         return mid;
     }
 
+    public ListNode reverseList(ListNode head) {
+        if(head == null){
+            return head;
+        }
+
+        ListNode prev = null;
+        ListNode present = head;
+        ListNode next = present.next;
+
+        while(present != null) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if (next != null){
+                next = next.next;
+            }
+        }
+        return prev;
+    }
+
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if(left == right) {
             return head;
@@ -96,6 +118,23 @@ public class MergeSort {
         newEnd.next = current;
 
         return head;
+    }
+
+    public boolean isPalindrome(ListNode head) {
+        ListNode mid = getMid(head);
+        ListNode headSecond = reverseList(head);
+        ListNode rereverseHead = headSecond;
+
+        while (head != null && headSecond != null){
+            if (head.val != headSecond.val) {
+                break;
+            }
+            head = head.next;
+            headSecond = headSecond.next;
+        }
+        reverseList(rereverseHead);
+
+        return head == null || headSecond == null;
     }
     class ListNode {
         int val;

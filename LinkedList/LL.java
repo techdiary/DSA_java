@@ -175,7 +175,7 @@ public class LL {
 
 
     //recursion reverse
-    private void reverse(Node node){
+    public void reverse(Node node){
         if(node == tail){
             head = tail;
             return;
@@ -189,7 +189,7 @@ public class LL {
     }
 
     //in-place reversal
-    private void reverse2(Node node) {
+    public void reverse2(Node node) {
         if(node == null){
             head=tail;
             return;
