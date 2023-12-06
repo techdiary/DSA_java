@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class LetterCombination {
 
     public static void main(String[] args) {
-        String digits = "12";
+        String digits = "99";
 
         ArrayList<String> pads = letterCombination2("", digits);
         int padcount = letterCombinationCount("", digits);
-        System.out.println(padcount);
+//        System.out.println(padcount);
         System.out.println(pads);
     }
 
@@ -40,9 +40,21 @@ public class LetterCombination {
         ArrayList<String> ans = new ArrayList<>();
         int digit = up.charAt(0) - '0';
 
-        for (int i = (digit - 1)*3; i < digit*3; i++) {
-            char ch = (char)('a'+i);
+        for (int i = (digit - 2) * 3; i < (digit - 1) * 3; i++) {
+            char ch;
+            if(i>17){
+                ch = (char)('a'+(i+1));
+            } else {
+                ch = (char)('a'+i);
+            }
             ans.addAll(letterCombination2(p + ch, up.substring(1)));
+            if(i==17){
+                char uch = (char)('a' + i+1);
+                ans.add(String.valueOf(uch));
+            } else if(i == 23){
+                char uch = (char)('a' + i+2);
+                ans.add(String.valueOf(uch));
+            }
         }
 
         return ans;
