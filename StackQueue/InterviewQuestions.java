@@ -20,11 +20,91 @@ public class InterviewQuestions {
 //        int ans = stackgame.twoStack(10, arr, arr2);
 //        System.out.println(ans);
 
-        HistogramRectangle rect = new HistogramRectangle();
-        int[] histogramArr ={2,1,5,6,2,3};
-        int ans = rect.maxRectangleArea(histogramArr);
-        System.out.println(ans);
+        // HISTOGRAM
+//        HistogramRectangle rect = new HistogramRectangle();
+//        int[] histogramArr ={2,1,5,6,2,3};
+//        int ans = rect.maxRectangleArea(histogramArr);
+
+        //VALID PARANTH
+//        System.out.println(isValid("()[]{}"));
+//        System.out.println(minAddToMakeValid("((("));
+//        System.out.println(minInsertions("((("));
+        System.out.println(minInsertions("(()))"));
+        System.out.println(minInsertions("())"));
+        System.out.println(minInsertions("))())("));
     }
+    
+    public static boolean isValid(String s){
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch :
+                s.toCharArray()) {
+            if (ch == '(' || ch == '{' || ch == '['){
+                stack.push(ch);
+            } else {
+                if (ch == ')'){
+                    if ( stack.isEmpty() || stack.pop() != '('){
+                        return false;
+                    }
+                }
+                if (ch == '}'){
+                    if ( stack.isEmpty() || stack.pop() != '{'){
+                        return false;
+                    }
+                }
+                if (ch == ']'){
+                    if ( stack.isEmpty() || stack.pop() != '['){
+                        return false;
+                    }
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public static int minAddToMakeValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char ch : s.toCharArray()) {
+            if(ch == ')'){
+                if (!stack.isEmpty() && stack.peek() == '('){
+                    stack.pop();
+                } else {
+                    stack.push(ch);
+                }
+            } else {
+                stack.push(ch);
+            }
+        }
+        return stack.size();
+    }
+
+    public static int minInsertions(String s) {
+        int closed = 0, open = 0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i <= chars.length -1; i++) {
+            if (chars[i] == ')') {
+                //check next char el is closed too
+                if ((i+1) < chars.length && chars[i + 1] == ')') {
+                    ++i;
+                } else {
+                    ++closed;
+                }
+
+                if (open > 0){
+                    --open;
+                } else {
+                    ++closed;
+                }
+            } else {
+                ++open;
+            }
+        }
+
+        closed += open * 2;
+
+        return closed;
+    }
+
 }
 
 class HistogramRectangle {
